@@ -13,6 +13,7 @@ import type {CountryCode} from '@shopify/hydrogen/storefront-api-types';
 import {Suspense} from 'react';
 import ServerCartProvider from './components/cart/ServerCartProvider.server';
 import DefaultSeo from './components/DefaultSeo.server';
+import FathomAnalytics from './components/FathomAnalytics.client';
 import LoadingFallback from './components/global/LoadingFallback';
 import NotFound from './components/global/NotFound.server';
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <ShopifyProvider countryCode={session?.countryCode as CountryCode}>
+        <FathomAnalytics />
         <ServerCartProvider>
           <DefaultSeo />
           <Router>
